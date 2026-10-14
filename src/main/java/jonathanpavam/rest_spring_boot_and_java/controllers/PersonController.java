@@ -1,6 +1,8 @@
 package jonathanpavam.rest_spring_boot_and_java.controllers;
 
-import jonathanpavam.rest_spring_boot_and_java.model.Person;
+import jonathanpavam.rest_spring_boot_and_java.data.dto.v1.PersonDTO;
+import jonathanpavam.rest_spring_boot_and_java.data.dto.v2.PersonDTOV2;
+
 import jonathanpavam.rest_spring_boot_and_java.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,51 +16,48 @@ public class PersonController {
     @Autowired
     PersonService service;
 
-    @RequestMapping(
-            method = RequestMethod.GET,
+    @GetMapping(
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Person> findAll(){
+    public List<PersonDTO> findAll(){
         return service.findAll();
     }
 
-    @RequestMapping(value = "/{id}",
-            method = RequestMethod.GET,
+    @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Person findById(@PathVariable("id") String id){
+    public PersonDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
 
-    @RequestMapping(
-            method = RequestMethod.POST,
+    @PostMapping(
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
 
     )
-    public Person create(@RequestBody Person person){
+    public PersonDTO create(@RequestBody PersonDTO person){
         return service.create(person);
     }
 
-    @RequestMapping(
-            method = RequestMethod.PUT,
+    @PostMapping(value = "/v2",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
 
     )
-    public Person put(@RequestBody Person person){
+    public PersonDTOV2 createV2(@RequestBody PersonDTOV2 person){
+        return service.createV2(person);
+    }
+
+    @PutMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public PersonDTO put(@RequestBody PersonDTO person){
         return service.update(person);
     }
 
-    @RequestMapping(value = "/{id}",
-            method = RequestMethod.DELETE
-    )
-    public void delete(@PathVariable("id") String id){
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable("id") Long id){
         service.delete(id);
     }
-
-
-
-
-
 }
