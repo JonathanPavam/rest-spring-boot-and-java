@@ -1,6 +1,6 @@
 package jonathanpavam.rest_spring_boot_and_java.unittest.mapper;
 
-import jonathanpavam.rest_spring_boot_and_java.data.dto.v1.PersonDTO;
+import jonathanpavam.rest_spring_boot_and_java.data.dto.PersonDTO;
 import jonathanpavam.rest_spring_boot_and_java.model.Person;
 import jonathanpavam.rest_spring_boot_and_java.unittest.mapper.mocks.MockPerson;
 import org.junit.jupiter.api.BeforeEach;

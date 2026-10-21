@@ -1,16 +1,14 @@
 package jonathanpavam.rest_spring_boot_and_java.service;
 
 
-import jonathanpavam.rest_spring_boot_and_java.data.dto.v1.PersonDTO;
-import jonathanpavam.rest_spring_boot_and_java.data.dto.v2.PersonDTOV2;
+import jonathanpavam.rest_spring_boot_and_java.data.dto.PersonDTO;
 import jonathanpavam.rest_spring_boot_and_java.exceptions.ResourceNotFOundException;
 import jonathanpavam.rest_spring_boot_and_java.mapper.ObjectMapper;
-import jonathanpavam.rest_spring_boot_and_java.mapper.custom.PersonMapper;
 import jonathanpavam.rest_spring_boot_and_java.model.Person;
 import jonathanpavam.rest_spring_boot_and_java.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import static jonathanpavam.rest_spring_boot_and_java.mapper.ObjectMapper.parseListObjects;
+
 import static jonathanpavam.rest_spring_boot_and_java.mapper.ObjectMapper.parseObject;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -24,11 +22,6 @@ public class PersonService {
 
     @Autowired
     PersonRepository repository;
-
-    @Autowired
-    PersonMapper converter;
-
-
 
     public PersonDTO findById (Long id){
         logger.info("Finding one person");
@@ -46,12 +39,6 @@ public class PersonService {
         logger.info("Creating one Person!");
         var entity = parseObject(person, Person.class);
         return parseObject(repository.save(entity), PersonDTO.class);
-    }
-
-    public PersonDTOV2 createV2 (PersonDTOV2 person){
-        logger.info("Creating one Person V2!");
-        var entity = converter.convertDTOToEntity(person);
-        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public PersonDTO update (PersonDTO person){
