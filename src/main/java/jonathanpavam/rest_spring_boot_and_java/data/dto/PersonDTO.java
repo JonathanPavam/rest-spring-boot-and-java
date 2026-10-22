@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-package jonathanpavam.rest_spring_boot_and_java.data.dto.v1;
-import java.io.Serializable;
-
-public class PersonDTO implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String gender;
-
-=======
 package jonathanpavam.rest_spring_boot_and_java.data.dto;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -23,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 
 //@JsonPropertyOrder({"id", "address","firstName", "lastName", "gender"})
-@JsonFilter("PersonFilter")
+//@JsonFilter("PersonFilter")
 public class PersonDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -56,13 +41,9 @@ public class PersonDTO implements Serializable {
 
     private String sensitiveData;
 
->>>>>>> 4c8ad5d (feat: 12 - Custom JSON Serialization)
-
     public PersonDTO() {
     }
 
-<<<<<<< HEAD
-=======
     public Date getBirthDay() {
         return birthDay;
     }
@@ -71,7 +52,6 @@ public class PersonDTO implements Serializable {
         this.birthDay = birthDay;
     }
 
->>>>>>> 4c8ad5d (feat: 12 - Custom JSON Serialization)
     public Long getId() {
         return id;
     }
@@ -108,8 +88,6 @@ public class PersonDTO implements Serializable {
         return gender;
     }
 
-<<<<<<< HEAD
-=======
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -118,14 +96,10 @@ public class PersonDTO implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
->>>>>>> 4c8ad5d (feat: 12 - Custom JSON Serialization)
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-<<<<<<< HEAD
-
-=======
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -137,5 +111,4 @@ public class PersonDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, phoneNumber, birthDay, address, gender, sensitiveData);
     }
->>>>>>> 4c8ad5d (feat: 12 - Custom JSON Serialization)
 }
