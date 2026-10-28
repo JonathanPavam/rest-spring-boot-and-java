@@ -4,6 +4,7 @@ import jonathanpavam.rest_spring_boot_and_java.data.dto.PersonDTO;
 import jonathanpavam.rest_spring_boot_and_java.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.print.attribute.standard.Media;
@@ -69,7 +70,7 @@ public class PersonController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") Long id){
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id){
         service.delete(id);
-    }
+        return ResponseEntity.noContent().build();    }
 }
